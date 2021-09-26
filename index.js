@@ -1,7 +1,10 @@
 import keys from './keys.js';
+import utils from './utils.js'
 
 const url = `https://api.airtable.com/v0/${keys.db}/movies`;
 const apiKey = keys.apiKey;
+
+let formattedMovies = [];
 
 function init() {
     getMovies();
@@ -17,6 +20,8 @@ async function getMovies() {
     const data = await response.json();
     const movies = data.records;
     console.log('movies', movies);
+    formattedMovies = utils.formatData(movies);
+    console.log('formattedMovies', formattedMovies);
 }
 
 init();
