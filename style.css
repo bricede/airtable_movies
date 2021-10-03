@@ -2,4 +2,34 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-form {
+    background-color: rgb(187,186,181);
+    box-shadow: 0px 2px 10px rgba(255,255,255,0.2);
+    padding: 20px;
+    margin: 20px 0px;
+    width: 40%;
+    max-width: 100%;
+    color: white;
+}
+
+.formitem {
+    text-transform: uppercase;
+    flex-direction: column;
+    height: 50px;
+}
+
+.btn {
+    outline: 0px;
+    border: 0px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #0a7e3e;
+    color: white;
+    margin: 5px 0px;
+    text-transform: uppercase;
 }

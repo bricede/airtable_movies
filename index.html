@@ -10,6 +10,39 @@
 </head>
 <body>
     <div class="movies"></div>
+    
+    <div class="movie-form">
+        <!-- formulaire de saisie de films -->
+        <form id="addmovie">
+            <div class="formitem">
+                <label for="movietitle">Titre</label>
+                <input type="text" name="movietitle" id="movietitle">
+            </div>
+            <div class="formitem">
+                <label for="movieyear">Année</label>
+                <input type="number" value="2021" name="movieyear" id="movieyear" min="1900", max="2025">
+            </div>
+            <div class="formitem">
+                <label for="moviegenre">Genre</label>
+                <select name="moviegenre" id="moviegenre">
+                    <option value="policier">policier</option>
+                    <option value="Western">Western</option>
+                    <option value="Drame">Drame</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Humour">Humour</option>
+                    <option value="SF">SF</option>
+                    <option value="Historique">Historique</option>
+                    <option value="Série">Série</option>
+                    <option value="Classique">Classique</option>
+                </select>
+            </div>  
+            <div class="formitem">
+                <button class="btn" type="submit">ajouter</button>
+            </div>
+        </form>
+    </div>
+
+
     <script src="./index.js" type="module"></script>
 </body>
 </html>
