@@ -6,6 +6,25 @@ const apiKey = keys.apiKey;
 
 let formattedMovies = [];
 const moviesDiv = document.querySelector('.movies'); //récupération de l'élément du DOM (de la classe .movies)
+const addMovieForm = document.getElementById('addmovie');
+
+addMovieForm.addEventListener('submit', e => {
+    e.preventDefault(); //pour éviter de recharger toute la page
+    new FormData(addMovieForm); //pour récupérer toutes les données du formulaire
+})
+
+addMovieForm.addEventListener('formdata', e => { //pour récupérer tout ce qui a été saisi dans le formulaire
+    let data = e.formData;
+   
+    const newMovie = {
+        title: data.get('movietitle'),
+        year: Number(data.get('movieyear')),
+        genre: data.getAll('moviegenre')
+    };
+    console.log('newMovie', newMovie);
+})
+
+
 
 function init() {
     getMovies();
