@@ -22,6 +22,7 @@ addMovieForm.addEventListener('formdata', e => { //pour récupérer tout ce qui 
         genre: data.getAll('moviegenre')
     };
     console.log('newMovie', newMovie);
+    postMovie(newMovie);
 })
 
 
@@ -43,13 +44,37 @@ async function getMovies() {
     formattedMovies = utils.formatData(movies);
     console.log('formattedMovies', formattedMovies);
     displayMovies(formattedMovies);
-}
+};
 
 function displayMovies(movies) {
-    const cards = movies.map((m) => `<div class="card">${m.Name} (${m.Year})</div>`); //récupération d'un tableau de strings
+    const cards = movies.map((m) => `<div class="card">${m.title} (${m.year})</div>`); //récupération d'un tableau de strings
     // ['<div class="card">Tenet</div>',<div class="card">Danse avec les Loups</div>',...]
     console.log('cards', cards);
     moviesDiv.innerHTML = `<h2>Tous les films</h2>${cards.join('')}`;
-}
+};
+
+async function postMovie(movie) {
+    const payload = {   //la structure est décrite dans l'aide d'airtable => API/POST
+        records: [
+            {
+                fields: movie,
+            },
+        ],
+    };
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(payload),
+    });
+    const data = await response.json();
+    console.log('data', data);
+};
+
+
+
 
 init();
